@@ -2,6 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
+// Resolvers populate data
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
@@ -16,6 +17,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
+// Middleware to convert objects served as objects
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
