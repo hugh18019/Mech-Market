@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-    purchaseDate: {
+    date: {
         type: Date,
         default: Date.now
     },
@@ -13,6 +13,9 @@ const orderSchema = new Schema({
             ref: 'Product'
         }
     ],
+    status: {
+        type: String
+    }
 });
 
 const Order = mongoose.model('Order', orderSchema);
