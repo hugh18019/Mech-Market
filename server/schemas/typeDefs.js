@@ -47,27 +47,29 @@ const typeDefs = gql`
     }
 
     type Query {
-        category: [Categories]
+        categories: [Category]
         
-        product(_id: ID!): Product
+        products( category: ID, name: String ): [Product]
+
+        product( _id: ID! ): Product
         
         user: User
         
-        order:(_id: ID!): Order
+        order:( _id: ID! ): Order
         
-        checkout(products: [ID]!): Checkout
+        checkout( products: [ID]! ): Checkout
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+        addUser( firstName: String!, lastName: String!, email: String!, password: String! ): Auth
         
-        addOrder(products: [ID]!): Order
+        addOrder( products: [ID]! ): Order
         
-        updateUser(firstName: String, lastName: String, email: String,password: String!): Auth
+        updateUser( firstName: String, lastName: String, email: String,password: String! ): Auth
         
-        updatePrduct(_id: ID!, quantity: Int!): Product
+        updatePrduct( _id: ID!, quantity: Int! ): Product
         
-        login(email: String!, password: String!): Auth
+        login( email: String!, password: String! ): Auth
     }
 
 

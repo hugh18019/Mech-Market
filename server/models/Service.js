@@ -10,7 +10,7 @@ const serviceSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    offerDate: {
+    date: {
         type: Date,
         default: Date.now
     },
