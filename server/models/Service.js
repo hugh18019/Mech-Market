@@ -10,14 +10,6 @@ const serviceSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    seller: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }
 })
 
 const Service = mongoose.model('Service', serviceSchema);

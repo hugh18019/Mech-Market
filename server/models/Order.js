@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-    date: {
+    orderDate: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: ( timestamp ) => dateFormat( timestamp ),
     },
     products: [
         {

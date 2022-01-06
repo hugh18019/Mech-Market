@@ -15,22 +15,27 @@ const server = new ApolloServer({
   context: authMiddleware
 });
 
-server.applyMiddleware({ app });
+async function applyMiddleware () {
+  await server.start();
+  server.applyMiddleware({ app });
 
-// Middleware to convert objects served as objects
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
-// Serve up static assets
-app.use('/images', express.static(path.join(__dirname, '../client/images')));
+  // Middleware to convert objects served as objects
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+  }
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+
 }
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+applyMiddleware();
 
 db.once('open', () => {
   app.listen(PORT, () => {

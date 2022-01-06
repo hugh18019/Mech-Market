@@ -15,5 +15,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.4.0"
+  },
+  "dependencies": {
+    "graphql": "^16.2.0",
+    "mongoose": "^6.1.5"
   }
 }
