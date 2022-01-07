@@ -1,8 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CakeContainer from './components/CakeContainer';
-
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
@@ -11,6 +9,10 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
+import Header from './components/Header';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -34,9 +36,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className='App'>
-        <CakeContainer />
-      </div>
+      <Router>
+        <Navbar />
+
+        <Home />
+      </Router>
     </ApolloProvider>
   );
 }
