@@ -48,6 +48,10 @@ export const QUERY_ALL_USERS = gql`
         _id
         products {
           _id
+          name
+          description
+          price
+          quantity
         }
       }
     }

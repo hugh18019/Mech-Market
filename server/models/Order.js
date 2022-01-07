@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const { Schema } = mongoose;
+const Product = require('./Product');
 
 const orderSchema = new Schema({
     orderDate: {
